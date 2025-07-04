@@ -1,0 +1,68 @@
+mat-grid-list {
+  padding: 10% 20% 10% 20% !important;
+  margin: 20px;
+}
+
+mat-grid-list mat-grid-tile:nth-child(2) {
+  /*background-color: darkslategray !important;*/
+  min-height: 100px !important;;
+}
+
+mat-card {
+  height: 90% !important;
+  width: 500px;
+  margin-left:  10px;
+  box-shadow: none;
+
+}
+.logo1{
+  max-width: 60%;
+  max-height: 80%;
+  margin-left: 30px;
+  margin-right: 18px;
+  margin-top: 119px;
+  user-select: none; /* Standard syntax */
+
+}
+
+img.logo2{
+  max-width: 40%;
+  max-height: 65%;
+  margin-top: 80px;
+  margin-left: -10px;
+  margin-right: 25px;
+  user-select: none; /* Standard syntax */
+
+}
+
+.logo3{
+  max-width: 50%;
+  max-height: 40%;
+  margin-top: 140px;
+  margin-left: -10px;
+  user-select: none; /* Standard syntax */
+}
+
+h1{
+  font-size: 28px;
+  text-indent: 11px;
+  line-height: 1.2em;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  letter-spacing: 0.3px;
+  text-decoration: none;
+  cursor: default;
+  user-select: none; /* Standard syntax */
+  text-align: center;
+  margin-top: -90px;
+}
+mat-grid-tile {
+  margin-top: 18px;
+}
+
+mat-sidenav {
+  height: 10%;
+  margin-top: -6px;
+  border-bottom: 1px  solid  black;
+  border-right: 1px solid black ;
+
+}

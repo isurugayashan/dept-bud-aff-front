@@ -1,0 +1,430 @@
+/* Tool Bar */
+
+mat-toolbar-row {
+  background-color: #dea21a;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+  overflow: auto;
+}
+
+
+.toolbar-left {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+
+.toolbar-right {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.head-logo {
+  height: 40px;
+  width: 140px;
+  border-radius: 5px;
+  margin-left: 16px;
+  margin-right: 12px;
+  vertical-align: middle;
+  user-select: none; /* Standard syntax */
+}
+
+.btn-nav.mat-mdc-icon-button {
+  background-color: #ad7715;
+  color: #ffffff;
+  vertical-align: middle;
+  /*box-shadow: 1px 1px 6px #333333;*/
+  /*border: #c0d9c3 solid 2px;*/
+  padding: 10px 5px 3px;
+  --mat-mdc-button-ripple-color: rgba(255, 255, 255, 0.2);
+}
+
+.lbl-user {
+  font-size: 14px;
+  color: white;
+  margin: 0px 5px 0px 0px;
+}
+
+.img-user {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+
+.btn-logout {
+  color: white;
+  border-radius: 0px;
+  margin: 0px 0px 0px -5px;
+}
+
+
+/* Side Navigation */
+
+mat-divider {
+  margin-top: 6px;
+  margin-left: 16px;
+  margin-right: 16px;
+  width: auto;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+mat-sidenav-container {
+  height: calc(100vh - 65px);
+}
+
+mat-sidenav {
+  background-color: #dea21a;
+  width: 250px;
+  padding: 16px 0px;
+}
+
+mat-sidenav a {
+  font-size: 14px;
+  text-decoration: none;
+}
+
+mat-sidenav mat-icon {
+  font-size: 16px;
+  margin: 0px 0px -10px 0px;
+}
+
+mat-nav-list mat-list-item {
+  height: 35px;
+  font-size: 14px;
+  padding: 0px 5px 0px 10px;
+  border-bottom: #dea21a 2px solid;
+}
+
+mat-nav-list mat-list-item:hover {
+  background: #dea21a;
+}
+
+mat-nav-list mat-expansion-panel {
+  box-shadow: none;
+  border-radius: unset;
+}
+
+.mdc-list-item.mdc-list-item--with-one-line {
+  height: 36px;
+}
+
+.mat-expansion-panel{
+  display: inline;
+  background-color: #dea21a;
+}
+
+mat-expansion-panel-header {
+  height: 40px;
+  transition: background 0.3s ease, transform 0.3s ease;
+  background-color: #dea21a;
+  color: white;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-size: 17px;
+}
+
+/*mat-expansion-panel-header:hover,*/
+/*::ng-deep mat-expansion-panel-header:hover .mat-expansion-indicator::after {*/
+/*  font-weight: bold;*/
+/*  color: #030354 !important;*/
+/*  transform: scale(0.95);*/
+/*  transition: transform 0.3s ease; !* Adjust the time (0.3s) and timing function (ease) as needed *!*/
+/*}*/
+mat-expansion-panel-header,
+::ng-deep mat-expansion-panel-header .mat-expansion-indicator::after {
+  transition: transform 0.10s ease; /* Adjust the time (0.3s) and timing function (ease) as needed */
+}
+
+mat-expansion-panel-header:hover,
+::ng-deep mat-expansion-panel-header:hover .mat-expansion-indicator::after {
+  font-weight: bold;
+  color: #030354 !important;
+  transform: scale(0.95);
+}
+
+
+
+
+.mat-expansion-panel-header.mat-expanded{
+  height: 50px;
+
+}
+
+mat-expansion-panel mat-list-item{
+  background-color: #dea21a;
+}
+
+mat-expansion-panel mat-list-item:hover {
+  background: linear-gradient(to right, #7a5638, #6c394b); /* Replace these colors with your desired gradient colors */
+  transform: scale(0.95);
+  border-radius: 10px;
+}
+
+/deep/.mat-expansion-panel-content{
+  overflow: auto;
+}
+
+mat-expansion-panel ng-container{
+  color: #dea21a ;
+ }
+
+mat-nav-list mat-expansion-panel mat-list-item {
+  height: 18px;
+  background-color: #dea21a;
+
+}
+
+/* Using ::ng-deep to style deep-piercing descendants */
+.mat-expansion-panel ::ng-deep .mat-expansion-panel-body {
+  padding: 0;
+  height: auto;
+  overflow: hidden;
+}
+
+mat-expansion-panel  button {
+  width: 100%;
+}
+
+.menu-button{
+  width: 100%;
+  padding: 10px 10px 10px 16px;
+}
+
+.dash-button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 2rem;
+  transition: transform 0.3s ease; /* Add a smooth transition effect */
+}
+
+mat-selection-list button{
+  color: white;
+  font-family: Roboto, "Helvetica Neue",serif;
+  font-size: 15px;
+  padding-left: 15px;
+}
+
+
+.dash-button:hover {
+  font-weight: bold;
+  color: #030354;
+  /*background: #b5d3b5 !important;*/
+  transform: scale(0.95); /* Move the button up by 5 pixels on hover */
+  background: linear-gradient(to right, #7a5638, #6c394b); /* Replace these colors with your desired gradient colors */
+
+}
+
+/*.active-list-item {*/
+/*  color: #2f2004 !important; !* Note: You could also use a custom theme *!*/
+/*  font-weight: bold;*/
+/*}*/
+
+mat-list-option{
+  padding-left: -15px !important;
+  height: 35px !important;
+  font-size: 15px !important;
+}
+
+mat-list-item mat-list-option{
+  margin-left: -10px;
+}
+
+mat-selection-list button {
+  text-align: center;
+  font-size: 17px;
+  border: none;
+
+}
+
+mat-selection-list button mat-icon{
+  padding-left: 10px;
+  padding-top: -20px;
+  margin: 0px 10px -2px 0px;
+}
+/*footer*/
+footer {
+  background-color: #dea21a;
+  position: relative;
+  display: flex;
+  padding-left: 40%;
+  font-weight: 600;
+  height: 40px;
+  color: white;
+  overflow: auto;
+  /*margin-left: 20px;*/
+}
+
+.matIcon {
+  font-size:10px;
+  margin-top: 13px;
+  padding: 0;
+  margin-left: 1px;
+  margin-right: -12px;
+  vertical-align: middle;
+  font-weight: bold;
+  color: white;
+}
+
+.img-logo {
+  height: 40px;
+  width: 120px;
+  border-radius: 5px;
+  margin-left: 6px;
+  margin-right: 12px;
+  vertical-align: middle;
+  user-select: none; /* Standard syntax */
+}
+
+/* Indicator animation*/
+.indicator{
+  position: relative;
+  top: -13px;
+  left: 13px;
+  margin-bottom: 1px;
+}
+
+.circle{
+  background: #091694;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+.circle {
+  background-color: #727cf5;
+  content: "";
+  display: table;
+  border-radius: 50%;
+  position: absolute;
+
+  box-shadow: 0 0 0 0 rgb(9, 21, 150);
+  transform: scale(1);
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse{
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgb(18, 29, 155);
+  }
+
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+  }
+
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  }
+}
+
+.notification{
+  color: #0b0b57;
+  border-color: #030354;
+  margin-right: 10px;
+}
+.toolbar-right mat-icon{
+  color: #0b0b57;
+  margin-right: 10px;
+}
+
+.toolbar-right mat-icon:hover,
+.toolbar-right mat-icon:active {
+  color: #ffffff;
+}
+
+
+/deep/ ::-webkit-scrollbar {
+  display: none;
+
+}
+
+
+/*arrow down indicator css*/
+/deep/ .mat-expansion-indicator::after,
+/deep/ .mat-expansion-panel-header-description {
+  color: white;
+  transition: color 0.3s ease; /* Add a smooth transition effect */
+}
+
+.mat-expansion-panel:not(.mat-expanded):not([aria-disabled=true]) .mat-expansion-panel-header:hover {
+  background: none;
+}
+
+.toggle {
+  position: fixed;
+  top: 45%;
+  right: 11px; /* Adjust the distance from the right as needed */
+  transform: translateY(-50%);
+  height: 60px;
+  text-align: center;
+  background-color: #ecd6af;
+}
+
+.dark{
+  background-color: #050705;
+  color: white;
+
+}
+
+/*router-outlet{*/
+/*  overflow: auto;*/
+/*}*/
+
+
+/*responsive*/
+@media(max-width: 800px) {
+  mat-sidenav {
+    width: 250px;
+  }
+
+  mat-divider {
+    width: auto;
+  }
+
+  .head-logo {
+    height: auto;
+    width: auto;
+    margin-right: 15px;
+    margin-top: 12px;
+    margin-bottom: 10px;
+
+  }
+  .toggle {
+    position: fixed;
+    top: 50%;
+    /*right: 16px;*/
+    transform: translateY(-50%);
+    text-align: center;
+  }
+
+}
+mat-list-item button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 15px;
+  width: 100%; /* Ensure the button takes the full width */
+}
+
+.active-list-item {
+  color: #2f2004 !important;
+  font-weight: bold;
+}
+
+mat-list-item button span {
+  font-size: 14px;
+  padding-right: 12px;
+}
+
+mat-list-item button span span {
+  margin-right: 5px; /* Adjust the margin as needed */
+  font-size: 10px;
+  font-weight: bold;
+}

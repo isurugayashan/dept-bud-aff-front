@@ -1,0 +1,139 @@
+<mat-toolbar>
+  <mat-toolbar-row>
+
+    <span class="toolbar-left">
+    <button mat-icon-button (click)="opened=!opened" class="btn-nav"><mat-icon>menu</mat-icon></button>
+      <img src="/assets/logo.png" class="head-logo">
+    </span>
+
+    <span class="toolbar-right">
+      <mat-icon> mail_outline</mat-icon>
+      <div class="indicator">
+        <div class="circle"></div>
+      </div>
+      <mat-icon class="notification">notifications</mat-icon>
+      <div  #myDiv style = "position: absolute; width: 65px; height: 40px; left: 80.3%; top: 1px"
+            matRipple>
+      </div>
+
+      <span class="toolbar-right">
+        <label class="lbl-user">{{getUsername()}}</label>
+        <img src="assets/user.png" class="img-user"/>
+        <button mat-icon-button (click)="logout($event)" class="btn-logout"><mat-icon>exit_to_app</mat-icon> </button>
+      </span>
+   </span>
+  </mat-toolbar-row>
+
+</mat-toolbar>
+
+<mat-sidenav-container>
+
+  <mat-sidenav [(opened)]="opened" mode="side">
+
+    <mat-divider></mat-divider>
+
+    <mat-accordion>
+    <mat-selection-list [multiple]="false">
+      <button mat-button class="dash-button" routerLink="home" routerLinkActive="active-list-item">
+        <mat-icon [ngClass]="{'active-icon': isActive('home')}">widgets</mat-icon>
+        <span>Home</span>
+      </button>
+
+      <mat-expansion-panel *ngIf="isMenuVisible('location')">
+        <mat-expansion-panel-header>
+          <span><mat-icon> location_on</mat-icon>Location</span>
+        </mat-expansion-panel-header>
+        <ng-container>
+          <ng-container *ngFor="let menuItem of LocationmenuItems">
+            <ng-container *ngIf="menuItem.accessFlag">
+              <mat-list-item>
+                <button mat-button class="menu-button">
+          <span [routerLink]="menuItem.routerLink" routerLinkActive="active-list-item">
+            <span class="material-symbols-outlined">radio_button_unchecked</span>{{ capitalizeMenuItemName(menuItem.name) }}
+          </span>
+                </button>
+              </mat-list-item>
+            </ng-container>
+          </ng-container>
+
+        </ng-container>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel *ngIf="isMenuVisible('registration')">
+        <mat-expansion-panel-header>
+          <span><mat-icon>person_add</mat-icon>Registration</span>
+        </mat-expansion-panel-header>
+          <ng-container *ngFor="let menuItem of RegistrationmenuItems">
+            <ng-container *ngIf="menuItem.accessFlag">
+              <mat-list-item>
+                <button mat-button class="menu-button">
+          <span [routerLink]="menuItem.routerLink" routerLinkActive="active-list-item">
+            <span class="material-symbols-outlined">radio_button_unchecked</span>{{ capitalizeMenuItemName(menuItem.name)  }}</span>
+                </button>
+              </mat-list-item>
+            </ng-container>
+          </ng-container>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel *ngIf="isMenuVisible('dahampasala')">
+        <mat-expansion-panel-header>
+          <span><mat-icon>school</mat-icon>Daham Pasala</span>
+        </mat-expansion-panel-header>
+        <ng-container *ngFor="let menuItem of DahampasalamenuItems">
+          <ng-container *ngIf="menuItem.accessFlag">
+            <mat-list-item>
+              <button mat-button class="menu-button">
+          <span [routerLink]="menuItem.routerLink" routerLinkActive="active-list-item">
+            <span class="material-symbols-outlined">radio_button_unchecked</span>{{ capitalizeMenuItemName(menuItem.name)  }}
+          </span>
+              </button>
+            </mat-list-item>
+          </ng-container>
+        </ng-container>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel *ngIf="isMenuVisible('admin')">
+        <mat-expansion-panel-header>
+          <span><mat-icon>person</mat-icon>Admin</span>
+        </mat-expansion-panel-header>
+        <ng-container *ngFor="let menuItem of AdminmenuItems">
+          <ng-container *ngIf="menuItem.accessFlag">
+            <mat-list-item>
+              <button mat-button class="menu-button">
+          <span [routerLink]="menuItem.routerLink" routerLinkActive="active-list-item">
+            <span class="material-symbols-outlined">radio_button_unchecked</span>{{ capitalizeMenuItemName(menuItem.name) }}
+          </span>
+              </button>
+            </mat-list-item>
+          </ng-container>
+        </ng-container>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <span><mat-icon>poll</mat-icon>Reports</span>
+        </mat-expansion-panel-header>
+      </mat-expansion-panel>
+
+    </mat-selection-list>
+    </mat-accordion>
+
+  </mat-sidenav>
+  <mat-sidenav-content>
+
+    <router-outlet></router-outlet>
+
+    <mat-card class="toggle">
+      <mat-card-content>
+        <mat-slide-toggle (change)="onToggle($event)"  matTooltip="Theme"></mat-slide-toggle>
+      </mat-card-content>
+    </mat-card>
+
+
+  </mat-sidenav-content>
+
+</mat-sidenav-container>
+
+<footer>
+  <h6>Designed by FoHSS ITDept Ruhuna <mat-icon class="matIcon" style=" size: 100px;">copyright</mat-icon>2023.All Rights Reserved.</h6>
+</footer>

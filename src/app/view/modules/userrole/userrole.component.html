@@ -1,0 +1,87 @@
+<mat-grid-list [cols]="cols" rowHeight="4rem">
+
+  <!--  Form-->
+  <mat-grid-tile [colspan]="12" [rowspan]="4">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>User Vs Role Form </mat-card-title>
+      </mat-card-header>
+      <mat-card-content id="schform">
+        <mat-form [formGroup]="form">
+
+          <ng-select class="custom-select" [searchable]="true" placeholder="Select Role" formControlName="role" >
+            <ng-option *ngFor="let role of roles" [value]="role.id">{{ role.name }}</ng-option>
+          </ng-select>
+
+          <ng-select class="custom-select2" [searchable]="true" placeholder="Select User" formControlName="user" >
+            <ng-option *ngFor="let user of users" [value]="user.id">{{ user.name }}</ng-option>
+          </ng-select>
+
+          <div id="butpanel">
+            <button mat-raised-button (click)="add()" *ngIf="enaadd">Add</button>
+
+            <button mat-raised-button (click)="clearForm()">Clear</button>
+
+            <button mat-raised-button (click)="update()" [disabled]="!form.valid" *ngIf="enaupd">Update</button>
+
+            <button mat-raised-button (click)="delete()" [disabled]="!form.valid" *ngIf="enadel">Delete</button>
+
+          </div>
+        </mat-form>
+      </mat-card-content>
+    </mat-card>
+  </mat-grid-tile>
+
+  <!--  Table and search-->
+
+  <mat-grid-tile [colspan]="12" [rowspan]="7">
+    <mat-card class="table">
+      <mat-card-header class="tableHeader">
+        <mat-card-title>Table</mat-card-title>
+        <div id="loading">
+          <img [src]="imageurl">
+        </div>
+      </mat-card-header>
+
+      <mat-card-content>
+
+        <div class="table-responsive" >
+          <mat-table [dataSource]="data" fxLayout="column">
+
+            <ng-container *ngFor="let column of columns;let i = index;" [matColumnDef]="column">
+              <mat-header-cell *matHeaderCellDef> {{headers[i]}} </mat-header-cell>
+              <mat-cell *matCellDef="let element">
+                <div *ngIf="i < binders.length - 1" [innerHTML]="uiassist.getProperty(element, binders[i])"></div>
+                <div *ngIf="i >= binders.length - 1">
+                  <button class="tblButton" mat-raised-button (click)="fillForm(element)">Edit</button>
+                </div>
+
+              </mat-cell>
+            </ng-container>
+
+            <ng-container *ngFor="let cscolumn of cscolumns;let i = index;" [matColumnDef]="cscolumn">
+              <mat-header-cell *matHeaderCellDef>
+                <mat-form [formGroup]="csearch" class="csearch">
+                  <mat-form-field appearance="outline">
+                    <mat-label>{{csprompts[i]}}</mat-label>
+                    <input matInput [formControlName]="cscolumn" (keyup)="filterTable()">
+                  </mat-form-field>
+                </mat-form>
+              </mat-header-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="columns"></mat-header-row>
+            <mat-header-row *matHeaderRowDef="cscolumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: columns;"  [ngClass]="{'selected-row': row === selectedRow}"></mat-row>
+
+          </mat-table>
+
+          <mat-paginator showFirstLastButtons [length]="20" [pageSize]="5" [pageSizeOptions]="[3,5,10,20]"></mat-paginator>
+
+        </div>
+
+      </mat-card-content>
+    </mat-card>
+  </mat-grid-tile>
+
+</mat-grid-list>

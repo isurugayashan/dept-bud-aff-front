@@ -1,0 +1,130 @@
+<mat-grid-list [cols]="cols" rowHeight="4rem">
+
+  <!--  Form-->
+  <mat-grid-tile [colspan]="12" [rowspan]="6">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>ශිෂ්‍ය ෆෝරමය </mat-card-title>
+      </mat-card-header>
+      <mat-card-content id="schform">
+        <mat-form [formGroup]="form">
+
+          <mat-form-field appearance="outline">
+            <mat-label>Student Name</mat-label>
+            <input matInput formControlName="stuname">
+          </mat-form-field>
+          &nbsp;&nbsp;
+          <mat-form-field appearance="outline">
+            <mat-label>Student Reg No</mat-label>
+            <input matInput formControlName="regno">
+          </mat-form-field>
+          &nbsp;&nbsp;
+          <mat-form-field appearance="outline">
+            <mat-label>Gender</mat-label>
+            <mat-select formControlName="gender">
+              <mat-option [value]="null" selected>Not Selected</mat-option>
+              <mat-option *ngFor="let gender of genders"
+                          [value]="gender" >{{gender.name}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          &nbsp;&nbsp;
+          <mat-form-field appearance="outline">
+            <mat-label>Date of Birth</mat-label>
+            <input matInput [matDatepicker]="dob" formControlName="dob">
+            <mat-datepicker-toggle matIconSuffix [for]="dob"></mat-datepicker-toggle>
+            <mat-datepicker #dob></mat-datepicker>
+          </mat-form-field>
+          &nbsp;&nbsp;
+          <mat-form-field appearance="outline">
+            <mat-label>Tel No:</mat-label>
+            <input matInput formControlName="phone">
+            <mat-error *ngIf="this.form.controls['phone']?.invalid">Enter 10-digit phone number.</mat-error>
+          </mat-form-field>
+          &nbsp;&nbsp;
+          <mat-form-field appearance="outline" style="padding-top:7px">
+            <mat-label>Guardian Name</mat-label>
+            <input matInput formControlName="guardian">
+          </mat-form-field>
+          &nbsp;&nbsp;
+          <mat-form-field appearance="outline" style="width: 100%;padding-top:7px" id="address">
+            <mat-label>Address</mat-label>
+            <input matInput formControlName="address">
+          </mat-form-field>
+          &nbsp;&nbsp;
+
+          <ng-select class="custom-select" [searchable]="true" placeholder="Select Grade" formControlName="grade" >
+            <ng-option *ngFor="let grade of grades" [value]="grade.id">{{ grade.name }}</ng-option>
+          </ng-select>
+
+          <ng-select class="custom-select2" [searchable]="true" placeholder="Select Daham Pasala" formControlName="dahamschool" >
+            <ng-option *ngFor="let dahampasal of dahampasals" [value]="dahampasal.id">{{ dahampasal.name }}</ng-option>
+          </ng-select>
+
+          <div id="butpanel">
+            <button mat-raised-button (click)="add()" *ngIf="enaadd">Add</button>
+
+            <button mat-raised-button (click)="clearForm()">Clear</button>
+
+            <button mat-raised-button (click)="update()" [disabled]="!form.valid" *ngIf="enaupd">Update</button>
+
+            <button mat-raised-button (click)="delete()" [disabled]="!form.valid" *ngIf="enadel">Delete</button>
+
+          </div>
+        </mat-form>
+      </mat-card-content>
+    </mat-card>
+  </mat-grid-tile>
+
+  <!--  Table and search-->
+
+  <mat-grid-tile [colspan]="12" [rowspan]="7">
+    <mat-card class="table">
+      <mat-card-header class="tableHeader">
+        <mat-card-title>Table</mat-card-title>
+        <div id="loading">
+          <img [src]="imageurl">
+        </div>
+      </mat-card-header>
+
+      <mat-card-content>
+
+        <div class="table-responsive" >
+          <mat-table [dataSource]="data" fxLayout="column">
+
+            <ng-container *ngFor="let column of columns;let i = index;" [matColumnDef]="column">
+              <mat-header-cell *matHeaderCellDef> {{headers[i]}} </mat-header-cell>
+              <mat-cell *matCellDef="let element">
+                <div *ngIf="i < binders.length - 1" [innerHTML]="uiassist.getProperty(element, binders[i])"></div>
+                <div *ngIf="i >= binders.length - 1">
+                  <button class="tblButton" mat-raised-button (click)="fillForm(element)">Edit</button>
+                </div>
+
+              </mat-cell>
+            </ng-container>
+
+            <ng-container *ngFor="let cscolumn of cscolumns;let i = index;" [matColumnDef]="cscolumn">
+              <mat-header-cell *matHeaderCellDef>
+                <mat-form [formGroup]="csearch" class="csearch">
+                  <mat-form-field appearance="outline">
+                    <mat-label>{{csprompts[i]}}</mat-label>
+                    <input matInput [formControlName]="cscolumn" (keyup)="filterTable()">
+                  </mat-form-field>
+                </mat-form>
+              </mat-header-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="columns"></mat-header-row>
+            <mat-header-row *matHeaderRowDef="cscolumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: columns;"  [ngClass]="{'selected-row': row === selectedRow}"></mat-row>
+
+          </mat-table>
+
+          <mat-paginator showFirstLastButtons [length]="20" [pageSize]="5" [pageSizeOptions]="[3,5,10,20]"></mat-paginator>
+
+        </div>
+
+      </mat-card-content>
+    </mat-card>
+  </mat-grid-tile>
+
+</mat-grid-list>

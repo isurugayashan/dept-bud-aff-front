@@ -1,0 +1,40 @@
+mat-card {
+  padding: 20px;
+  background: #dea21a;
+}
+mat-icon{
+  margin-left: auto;
+  cursor: pointer;
+}
+mat-icon:hover{
+  color:red ;
+}
+mat-card-title {
+  margin-top: -6px;
+  padding: 10px 20px 10px 20px;
+  text-align: left;
+  font-size: 25px;
+  font-family: "Calibri", sans-serif;
+}
+
+mat-card-content {
+  padding: 10px 20px 20px 20px;
+  text-align: left;
+  text-decoration: none;
+  overflow: hidden !important;
+  margin-left: -10px;
+}
+
+button {
+  display: block;
+  margin: 0 auto;
+  padding: 5px 40px 5px 40px !important;
+  text-align: center;
+  width: 50%;
+}
+
+button:hover{
+  background-color: #0f123d;
+  color:white ;
+}
+
